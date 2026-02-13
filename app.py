@@ -29,8 +29,11 @@ def pagina_principal():
     #fechando a conexao
     conexao.close()
 
+    #recuperando os dados do genero
+    generos = cursos.fetchall()
 
-    return render_template("principal.html", musicas = musicas)
+
+    return render_template("principal.html", musicas = musicas, gereros = generos),
 
 if __name__ == "__main__":
     app.run(debug=True)
