@@ -88,14 +88,18 @@
                     </div>
                     <div class="column is-4">
                         <div class="field">
-                            <label class="label is-small">Categoria</label>
+                            <label class="label is-small">Genero</label>
                             <div class="control is-expanded">
                                 <div class="select is-fullwidth">
-                                    {% for genero in generos %}
-                                    <select>
-                                        <option value="{{genero.nome}}">{{genero.nome}}</option>
+                                    
+                                    <!-- caixinha de escolha -->
+                                    <select name="genero_nome">
+                                        {% for genero in generos %}
+                                        <!--  pega cada genero e repete -->
+                                        <option value="{{genero.NOME}}">{{genero.NOME}}</option>
+                                        {% endfor %}
                                     </select>
-                                    {% endfor %}
+                                   
                                 </div>
                             </div>
                         </div>

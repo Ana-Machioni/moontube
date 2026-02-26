@@ -1,9 +1,8 @@
-from flask import Flask, render_template
-import mysql.connector
+from flask import Flask, render_template, request, redirect
+
 from model.musica import recuperar_musicas 
 from model.genero import recuperar_generos
 from model.musica import adicionar_musica
-from model.musica import request 
 
 
 app = Flask (__name__)
@@ -32,10 +31,15 @@ def api_inserir_musica():
     cantor = request.form.get("cantor")
     duracao = request.form.get("duracao")
     url = request.form.get("imagem")
+    genero_nome = request.form.get("genero_nome")
 
-    if adicionar_musica():
+    if adicionar_musica( cantor, nome_musica, duracao, url, genero_nome):
+        return redirect ("/admin")
+    else:
+        return ("erro ao adicionar musica")
+    
+@app.route
 
-        
 
 
 

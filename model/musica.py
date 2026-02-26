@@ -7,7 +7,7 @@ def recuperar_musicas():
     conexao, cursor = conectar()
 
     #Executando a consultando
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;")
+    cursor.execute("SELECT codigo, cantor, nome,  duracao,  url_imagem, nome_genero FROM musica;")
 
     #rec os dados
     musicas =  cursor.fetchall()
