@@ -7,7 +7,7 @@ def recuperar_musicas():
     conexao, cursor = conectar()
 
     #Executando a consultando
-    cursor.execute("SELECT codigo, cantor, nome,  duracao,  url_imagem, nome_genero FROM musica;")
+    cursor.execute("SELECT codigo, cantor, nome,  duracao,  url_imagem, nome_genero, ativo FROM musica;")
 
     #rec os dados
     musicas =  cursor.fetchall()
@@ -49,4 +49,35 @@ def adicionar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, gener
     except Exception as erro : 
         print (erro)
         return False 
+    
+def excluir_musica(codigo: int):
+    """
+        a funçao tem objetivo de deletar musicas no banco de dados 
+    """
+
+    try:
+        # conectando ao banco
+        conexao, cursor = conectar()
+        # executar insert 
+        cursor.execute(""" 
+                            DELETE FROM Musica
+                            WHERE codigo = %s;
+                        """, [codigo])
+
+        # commit 
+        conexao.commit()
+
+        # fechando conexao
+        conexao.close()
+
+        return True
+    
+    except Exception as erro:
+        print(erro)
+        return False
+    
+# def ativar_musica(codigo:int, status:bool):
+
+
+        
     
