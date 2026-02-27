@@ -4,6 +4,7 @@ from model.musica import recuperar_musicas
 from model.genero import recuperar_generos
 from model.musica import adicionar_musica
 from model.musica import excluir_musica
+from model.musica import ativar_musica
 
 
 app = Flask (__name__)
@@ -12,7 +13,7 @@ app = Flask (__name__)
 @app.route("/")
 def pagina_principal():
     # recuperando as musicas 
-    musicas = recuperar_musicas()
+    musicas = recuperar_musicas(True)
     # recuperando os generos 
     generos = recuperar_generos()
     # mostrando a pagina 
@@ -43,6 +44,11 @@ def api_inserir_musica():
 @app.route("/musica/delete/<codigo>")
 def deletar_musica(codigo):
     excluir_musica(codigo)
+    return redirect("/admin")
+
+@app.route("/musica/ativar/<codigo>/<status>")
+def ativando_musica(codigo, status):
+    ativar_musica(codigo, status)
     return redirect("/admin")
 
 
