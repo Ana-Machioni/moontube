@@ -5,6 +5,7 @@ from model.genero import recuperar_generos
 from model.musica import adicionar_musica
 from model.musica import excluir_musica
 from model.musica import ativar_musica
+from model.usuario_model import cadastrar_usuario
 
 
 app = Flask (__name__)
@@ -50,6 +51,19 @@ def deletar_musica(codigo):
 def ativando_musica(codigo, status):
     ativar_musica(codigo, status)
     return redirect("/admin")
+
+@app.route("/cadastrar")
+def pag_login():
+    return render_template("cadastrar.html")
+
+@app.route("/cadastrar", methods=["POST"])
+def logar_usuario():
+    login = request.form.get("usuario")
+    senha = request.form.get("senha")
+    cadastrar_usuario(login, senha)
+    return redirect("/cadastrar")
+    
+
 
 
 if __name__ == "__main__":
