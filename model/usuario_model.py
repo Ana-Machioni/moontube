@@ -8,3 +8,21 @@ def cadastrar_usuario(usuario:str, senha:str):
     conexao.commit()
 
     conexao.close()
+
+def verificar_usuario(usuario:str, senha:str) ->list:
+    """
+    Funçao que verifica se o usuario esta cadastrado
+    Se estiver cadastrado retorno os dados do usuario
+    Se nao estiver cadastrado retorno None
+    """
+
+    conexao, cursor = conectar()
+
+    cursor.execute("SELECT login, senha FROM usuario WHERE usuario = %s, senha = %s, [usuario, senha]")
+
+    usuario= cursor.fetchone()
+
+    conexao.commit()
+    
+    conexao.close()
+    return usuario
