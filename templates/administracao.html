@@ -7,30 +7,178 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Força o fundo escuro em toda a página, independente do conteúdo */
-        html, body { 
-            background-color: #0a0a0a !important; 
-            color: #fff; 
-            min-height: 100vh;
-            margin: 0;
-        }
-        
-        body { padding: 40px 10px; }
-        
-        .box { background-color: #1a1a1a; border: 1px solid #2d2d2d; color: #fff; }
-        .input, .select select { background-color: #2d2d2d; border-color: #3d3d3d; color: #fff; }
-        .input:focus, .select select:focus { border-color: #485fc7; }
-        
-        /* Ajustes da Tabela */
-        .table { background-color: transparent; color: #fff; }
-        .table thead th { color: #7a7a7a; border-bottom-color: #2d2d2d; text-transform: uppercase; font-size: 0.75rem; }
-        .table td { border-bottom-color: #2d2d2d; vertical-align: middle; }
-        tr:hover { background-color: #242424 !important; }
-        
-        .title, .label { color: #fff !important; }
-        .subtitle { color: #485fc7 !important; }
-    </style>
-</head>
+
+/* ===== BASE ===== */
+body {
+    background: linear-gradient(135deg, #f5f5f7, #fdf1f6);
+    color: #3a3a3f;
+    min-height: 100vh;
+    padding: 40px 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== TITULOS ===== */
+.title {
+    color: #3a3a3f;
+}
+
+.subtitle {
+    color: #8a8a95;
+}
+
+/* ===== HEADER ===== */
+.level {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid #ececf1;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+/* ===== BOXES ===== */
+.box {
+    background: #ffffff;
+    border: 1px solid #ececf1;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    box-shadow: 0 12px 35px rgba(221,95,164,0.15);
+}
+
+/* ===== LABELS ===== */
+.label {
+    color: #6a6a73;
+    font-weight: 600;
+}
+
+/* ===== INPUTS ===== */
+.input, .select select {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e6;
+    color: #3a3a3f;
+    transition: all 0.3s ease;
+}
+
+.input::placeholder {
+    color: #b8b8c2;
+}
+
+.input:focus, .select select:focus {
+    border-color: #f8c8dc;
+    box-shadow: 0 0 0 3px rgba(248,200,220,0.35);
+}
+
+/* ===== BOTÕES ===== */
+
+.button {
+    transition: all 0.25s ease;
+}
+
+/* botão voltar */
+.button.is-dark {
+    background: #804458;
+    border: none;
+    color: white;
+}
+
+.button.is-dark:hover {
+    transform: scale(1.05);
+    background: #6f3a4b;
+}
+
+/* botão salvar */
+.button.is-link {
+    background: #804458;
+    border: none;
+}
+
+.button.is-link:hover {
+    background: #6f3a4b;
+}
+
+/* botões pequenos tabela */
+.button.is-warning.is-light:hover {
+    background: #ffe4f0;
+}
+
+.button.is-danger.is-light:hover {
+    background: #ffe0e3;
+}
+
+/* ===== TAGS ===== */
+
+.tag.is-dark {
+    background: #f8c8dc;
+    color: #3a3a3f;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+/* status ativo */
+.tag.is-success.is-light {
+    background: #e7f9f0;
+    color: #1a8f5b;
+    border-radius: 20px;
+}
+
+/* status desativado */
+.tag.is-danger.is-light {
+    border-radius: 20px;
+}
+
+/* ===== TABELA ===== */
+
+.table {
+    background: transparent;
+}
+
+.table thead {
+    background: #fafafb;
+}
+
+.table thead th {
+    color: #8a8a95;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ececf1;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #fff4f9;
+}
+
+/* ===== IMAGENS ===== */
+
+.image img {
+    border-radius: 10px;
+}
+
+/* ===== ANIMAÇÃO ===== */
+
+.box {
+    animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
 <body>
 
     <div class="container">
