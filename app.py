@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
 from model.musica import recuperar_musicas 
 from model.genero import recuperar_generos
@@ -9,7 +9,9 @@ from model.usuario_model import cadastrar_usuario
 from model.usuario_model import verificar_usuario
 
 
-app = Flask (__name__)
+app = Flask (__name__) 
+
+app.secret_key = "frankocean"
 
 @app.route("/home", methods=["GET"])
 @app.route("/")
@@ -23,6 +25,9 @@ def pagina_principal():
 
 @app.route("/admin")
 def pag_admin():
+    if "usuario_logado" not in session:
+        return redirect("/login")
+    
     # recuperando as muicas 
     musicas = recuperar_musicas()
     generos = recuperar_generos()
@@ -57,20 +62,26 @@ def ativando_musica(codigo, status):
 def pag_cadastro():
     return render_template("cadastrar.html")
 
-@app.route("/cadastrar", methods=["POST"])
+@app.route("/cadastrar/post", methods=["POST"])
 def cadastro_usuario():
     login = request.form.get("usuario")
     senha = request.form.get("senha")
     cadastrar_usuario(login, senha)
-    return redirect("/cadastrar")
+    return redirect("/admin")
+
 
 @app.route("/login")
 def pag_login():
+    return render_template("login.html")
+
+@app.route("/login/post", methods=["POST"])
+def login_post():
     login = request.form.get("usuario")
     senha = request.form.get("senha")
-    usuario = verificar_usuario(usuario, senha)
+    usuario = verificar_usuario(login, senha)
 
     if usuario:
+        session["usuario_logado"] = usuario
         return redirect("/admin")
     else:
         return redirect("/login")

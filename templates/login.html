@@ -5,10 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+   body {
+    background: linear-gradient(135deg, #f5f5f7, #fdf1f6);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #3a3a3f;
+}
+
+/* FORM BOX */
+form {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid #ececf1;
+    border-radius: 18px;
+    padding: 30px;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    animation: fadeInUp 0.5s ease;
+}
+
+/* LABEL */
+.label {
+    font-weight: 600;
+    color: #6a6a73;
+    font-size: 0.9rem;
+}
+
+/* INPUT */
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e6;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.input::placeholder {
+    color: #b8b8c2;
+}
+
+.input:focus {
+    border-color: #f8c8dc;
+    box-shadow: 0 0 0 3px rgba(248,200,220,0.35);
+}
+
+/* BOTÃO LOGIN (AGORA BONITO 😎) */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #804458, #a85c76);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(128,68,88,0.3);
+    background: linear-gradient(135deg, #6f3a4b, #944e66);
+}
+
+/* CLICK */
+.btn-login:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 <body>
 
 
-    <form action="/login" method="post">
+    <form action="/login/post" method="post">
 
         <div class="field">
             <label class="label">Usuário</label>
@@ -25,6 +117,8 @@
 </div>
 
     <button type="submit">Logar</button>
+
+    <a href="/cadastrar"><button type="button" class="button is-light">Cadastrar</button></a>
 
 </form>
 

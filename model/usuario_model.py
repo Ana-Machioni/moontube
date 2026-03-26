@@ -18,7 +18,7 @@ def verificar_usuario(usuario:str, senha:str) ->list:
 
     conexao, cursor = conectar()
 
-    cursor.execute("SELECT login, senha FROM usuario WHERE usuario = %s, senha = %s, [usuario, senha]")
+    cursor.execute("SELECT usuario, senha FROM login WHERE usuario = %s AND senha = %s ", [usuario, senha])
 
     usuario= cursor.fetchone()
 
@@ -26,3 +26,5 @@ def verificar_usuario(usuario:str, senha:str) ->list:
     
     conexao.close()
     return usuario
+
+
